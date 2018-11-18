@@ -1,0 +1,106 @@
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<script src="heatmap.js-2.0.5/build/heatmap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="heatmap.css"/>
+</head>
+<body style="margin:0; background-image: url('TODO: put your screenshot filename here'); background-repeat: no-repeat;">
+<canvas id="myCanvas" width="1920" height="1200" style="position: absolute; left: 0px; top: 0px">
+<script>
+// TODO: in the line two lines above this one, replace the width and height values with the original resolution of your screenshot
+
+const CSV_NAME = 'TODO: put your CSV filename here';
+
+//ajax GET request to load the csv file and launch the animated replay code
+$(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url: CSV_NAME,
+        dataType: "text",
+        success: function(data) {processData(data);}
+    });
+});
+
+// this is just a function that slows processing down a bit to reduce computer lag
+// you can safely ignore it
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+//actual process function
+async function processData(allText) {
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+
+  //split csv lines by return \n and by commas
+  var allTextLines = allText.split(/\r\n|\n/);
+
+  // allTextLines is an array that has each line from
+  // your data file as an element
+  //
+  // for example, the first element in allTextLines is
+  // the header, so you can get that row and split it like:
+  //
+  // var headers = allTextLines[0].split(',');
+  //
+  // Note that you can strip out the extra quotes from
+  // a string and convert it into a float by using:
+  //
+  // var myfloat = parseFloat(mystring.substring(1, mystring.length-1));
+  //
+  // TODO: loop through the data in allTextLines
+  // and animate the user's eye gaze on the screen by drawing a
+  // dot on the canvas to show where the user was looking over time.
+  //
+  // There are multiple ways this can be done, and the goal is just to
+  // be able to visualize how the user looked at the page over time
+  // The replay does not need to be exactly accurate to the time.
+  //
+  // You will notice that if you just keep drawing forever, it will
+  // create a mess on the screen, so you can clear the dots periodically
+  // using the ctx.clearRect() function (see below)
+  //
+  // One way to do things periodically is using the modulus operator
+  // For example, if the variable i is incremented in a loop,
+  // then i % 200 === 0 is true every 200 loops
+  //
+  // You must set the variable:
+  // ctx.fillStyle
+  //  which can be a color, like "rgb(255, 0, 0)" for red (keep the quotes).
+  //  Set this before the ctx.fillRect() function call
+  //
+  // The functions that will be handy are:
+  //
+  // ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //   to clear the screen. No need to change any parameters
+  //
+  // await sleep(m);
+  //   to slow things down so that there is m milliseconds of delay
+  //
+  // ctx.fillRect(x, y, w, h)
+  //   to draw a dot at x,y with width w and height h
+  //   (select a small width and height since it's just drawing a dot)
+  //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+</script>
+</div>
+</body>
+</html>

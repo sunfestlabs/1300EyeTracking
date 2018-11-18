@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<script src="heatmap.js-2.0.5/build/heatmap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="heatmap.css"/>
+</head>
+<script type="text/javascript">
+$(document).ready(function() {
+  var one = document.getElementById("one");
+  var two = document.getElementById("two");
+  style = window.getComputedStyle(one);
+  wdt = style.getPropertyValue("width");
+  two.style.width = 1920;
+});
+
+const CSV_NAME = 'TODO: put your CSV filename here';
+
+//ajax GET request to load the csv file and launch the heatmap
+$(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url: CSV_NAME,
+        dataType: "text",
+        success: function(data) {processData(data);}
+    });
+});
+
+//Actual process function
+function processData(allText) {
+  //Split csv lines by return \n and by commas
+  var allTextLines = allText.split(/\r\n|\n/);
+  var datapoints = [];
+
+  // allTextLines is an array that has each line from
+  // your data file as an element
+  //
+  // for example, the first element in allTextLines is
+  // the header, so you can get that row and split it like:
+  //
+  // var headers = allTextLines[0].split(',');
+  //
+  // Note that you can strip out the extra quotes from
+  // a string and convert it into a float by using:
+  //
+  // var myfloat = parseFloat(mystring.substring(1, mystring.length-1));
+	// A heatmap data point looks like this object:
+  //  {
+  //    x: ?, // x coordinate of the data point, a float
+  //    y: ?, // y coordinate of the data point, a float
+  //    value: 1 // leave at 1, but feel free to tweak for a hotter-looking heatmap
+  //  }
+  //
+  // TODO: loop through the data in allTextLines
+  // and put each data point in the datapoints array.
+  // This datapoints array is then plotted on the heatmap (that part is already written below)
+  //
+  // Note that there are two more "TODO"s near the bottom of this file
+
+
+
+
+
+
+
+
+
+
+
+  //Creates a heatmap instance
+  var heatmapInstance = h337.create({
+      container: document.querySelector('.heatmap')
+  });
+
+  //Initializes a heatmap data object with the lines
+  //stack datapoints
+  var data = {
+    max: 4, // TODO: sets the maximum value to be displayed as red in the heatmap. Find a value (different for each log file) such that there are a couple red areas
+    min: 0,
+    data: datapoints
+  };
+
+  //Displays heatmap
+  heatmapInstance.setData(data);
+}
+</script>
+<body style="margin:0">
+<h2>Heatmap</h2>
+<div id="one" class="heatmap" style="position: relative;">
+<img id="two" class="heatmap-canvas" id="heatmap-canvas" style="position: absolute; left: 0px; top: 0px" src="TODO: put your screen capture image filename here">
+</div>
+</body>
+</html>
