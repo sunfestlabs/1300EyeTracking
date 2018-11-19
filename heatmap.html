@@ -14,7 +14,7 @@ $(document).ready(function() {
   two.style.width = 1920;
 });
 
-const CSV_NAME = './Heidi-1.csv';
+const CSV_NAME = './Heidi-3.csv';
 
 //ajax GET request to load the csv file and launch the heatmap
 $(document).ready(function() {
@@ -87,8 +87,16 @@ function processData(allText) {
 
   //Initializes a heatmap data object with the lines
   //stack datapoints
+
+  var maxVal;
+  var bgImg;
+
+  //homescreen: max = 30
+  //space station: max = 4
+  //profile: max = 3
+  //after adding as friend: max = 10
   var data = {
-    max: 7, // TODO: sets the maximum value to be displayed as red in the heatmap. Find a value (different for each log file) such that there are a couple red areas
+    max: 10, // TODO: sets the maximum value to be displayed as red in the heatmap. Find a value (different for each log file) such that there are a couple red areas
     min: 0,
     data: datapoints
   };
@@ -100,7 +108,7 @@ function processData(allText) {
 <body style="margin:0">
 <h2>Heatmap</h2>
 <div id="one" class="heatmap" style="position: relative;">
-<img id="two" class="heatmap-canvas" id="heatmap-canvas" style="position: absolute; left: 0px; top: 0px" src="./space station.png">
+<img id="two" class="heatmap-canvas" id="heatmap-canvas" style="position: absolute; left: 0px; top: 0px" src="./after add.png">
 </div>
 </body>
 </html>
