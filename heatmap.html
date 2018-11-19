@@ -65,9 +65,6 @@ function processData(allText) {
 
     //each line of data represented by an array. 0th element is X, 1st is Y, 2nd is time/date.
     var oneLine = allTextLines[i].split(',');
-    console.log(parseFloat(oneLine[0].substring(1, oneLine[0].length-1)));
-    console.log(parseFloat(oneLine[1].substring(1, oneLine[1].length-1)));
-    console.log("dicks");
     var point = {
       x: parseFloat(oneLine[0].substring(1, oneLine[0].length-1)),
       y: parseFloat(oneLine[1].substring(1, oneLine[1].length-1)),

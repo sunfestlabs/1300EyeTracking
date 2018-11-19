@@ -5,12 +5,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="heatmap.css"/>
 </head>
-<body style="margin:0; background-image: url('TODO: put your screenshot filename here'); background-repeat: no-repeat;">
+<body style="margin:0; background-image: url('./homescreen.png'); background-repeat: no-repeat;">
 <canvas id="myCanvas" width="1920" height="1200" style="position: absolute; left: 0px; top: 0px">
 <script>
 // TODO: in the line two lines above this one, replace the width and height values with the original resolution of your screenshot
 
-const CSV_NAME = 'TODO: put your CSV filename here';
+const CSV_NAME = './Heidi-0.csv';
 
 //ajax GET request to load the csv file and launch the animated replay code
 $(document).ready(function() {
@@ -84,17 +84,18 @@ async function processData(allText) {
   //
 
 
-
-
-
-
-
-
-
-
-
-
-
+  var len = allTextLines.length;
+  for (var i = 1; i < len - 1; i++) {
+    var oneLine = allTextLines[i].split(',');
+    var x = parseFloat(oneLine[0].substring(1, oneLine[0].length-1));
+    var y = parseFloat(oneLine[1].substring(1, oneLine[1].length-1));
+    ctx.fillStyle = "rgb(255,0,0)";
+    ctx.fillRect(x, y, 10, 10);
+    await sleep(100);
+    if (i % 200 === 0){
+      ctx.clearRect;
+    }
+  }
 
 
 
